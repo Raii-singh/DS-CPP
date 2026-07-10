@@ -3,19 +3,17 @@ public:
     bool isAnagram(string s, string t) {
         if(s.length() != t.length()) return false;
 
-        unordered_map<int, int> ss;
-        unordered_map<int, int> tt;
+        unordered_map<int, int> freq;
 
         for(int x: s){
-            ss[x]++;
+            freq[x]++;
         }
         for(int x: t){
-            tt[x]++;
+            freq[x]--;
         }
 
-        for(int i = 0; i < ss.size(); i++){
-            if(ss[i] == tt[i]) continue;
-            else return false;
+        for(auto x: freq){
+            if(x.second != 0) return false;
         }
         return true;
     }
