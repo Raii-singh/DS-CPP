@@ -1,23 +1,23 @@
 class Solution {
 public:
+    void fx(int idx, vector<int>& nums, vector<int>& sub, vector<vector<int>>& dom){
 
-    void fx(int idx,vector<int>& nums, vector<int>& sub, vector<vector<int>>& ans){
         if(idx == nums.size()){
-            ans.push_back(sub);
+            dom.push_back(sub);
             return;
         }
 
         sub.push_back(nums[idx]);
-        fx(idx+1, nums, sub, ans);
+        fx(idx + 1, nums, sub, dom);
 
         sub.pop_back();
-        fx(idx+1, nums, sub, ans);
+        fx(idx + 1, nums, sub, dom);
     }
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<int> sub;
-        vector<vector<int>> ans;
+        vector<vector<int>> dom;
 
-        fx(0, nums, sub, ans);
-        return ans;
+        fx(0, nums, sub, dom); 
+        return dom;       
     }
 };
